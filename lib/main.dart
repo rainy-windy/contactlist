@@ -7,9 +7,8 @@ import './screens/home.dart';
 import './screens/persona.dart';
 import './screens/edit.dart';
 
-void main() {
-  runApp(const App());
-}
+void main() =>  runApp(const App());
+
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);

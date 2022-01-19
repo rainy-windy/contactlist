@@ -122,8 +122,23 @@ class _FavListState extends State<FavList> {
                           splashRadius: 24,
                           color: Colors.transparent,
                           padding: const EdgeInsets.all(0),
-                          onPressed: () => Provider.of<Contacts>(context, listen: false).like(listing[n].mobileNumber as String),
-                          icon: Icon( Icons.star, size: 20, color: Theme.of(context).primaryColorLight),
+                          icon: Icon( Icons.star, color: Theme.of(context).primaryColorLight),
+                          onPressed: ()  {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                elevation: 16,
+                                duration: const Duration(milliseconds: 1250),
+                                content: Text(
+                                  'Unfaved ${listing[n].firstName}!',
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                                dismissDirection: DismissDirection.endToStart,
+                              ),
+                            );
+                            Provider.of<Contacts>(context, listen: false).like(listing[n].mobileNumber as String);
+                          },
                         ),
                       ),
                     ],
