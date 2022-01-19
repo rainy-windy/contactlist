@@ -112,11 +112,14 @@ class _EditState extends State<Edit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text((_index == null)? 'Add New Contact' : 'Edit Contact' ),
         actions: <Widget>[
           IconButton(
-            icon: const  Icon(Icons.save),
+            padding: const EdgeInsets.only(right: 32),
+            icon: const  Icon(Icons.check_circle_sharp, size: 32,),
             onPressed: _save,
+            splashColor: Theme.of(context).primaryColor,
           ),
         ],
       ),

@@ -30,48 +30,47 @@ class _AppState extends State<App> {
   @override
   void didChangeDependencies() {
     if (_initialising) {
-      _initialising = false;
       print('Start-up successfully!');
+      _initialising = false;
     }
     super.didChangeDependencies();
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+
     return _initialising
-        ? const CircularProgressIndicator()
-        : MultiProvider(
-            providers: [
-              ChangeNotifierProvider.value(
-                value: Contacts(),
-              ),
-            ],
-            child: MaterialApp(
-              title: 'Fresh Cars',
-              theme: ThemeData(
-                primaryColor: Colors.white,
-                primaryColorLight:  Colors.orange,
-                primaryColorDark: Colors.blue,
-                secondaryHeaderColor: Colors.pinkAccent,
-                dividerColor: Colors.pinkAccent,
-                errorColor: Colors.red,
-                // fontFamily: 'Montserrat',
-              ),
-              home: Home(),
-              routes: <String, WidgetBuilder>{
-                Home.routeName: (_) => Home(),
-                Persona.routeName: (_) => Persona(),
-                Edit.routeName: (_) => Edit(),
-              },
-              onUnknownRoute: (settings) => MaterialPageRoute(
-                builder: (_) => Home(),
-              ),
+      ? const CircularProgressIndicator()
+      : MultiProvider(
+          providers: [
+            ChangeNotifierProvider.value(
+              value: Contacts(),
             ),
-          );
+          ],
+          child: MaterialApp(
+            title: 'Contact List',
+            theme: ThemeData(
+              primaryColor: Colors.white,
+              primaryColorLight:  Colors.orange,
+              primaryColorDark: Colors.blue,
+              secondaryHeaderColor: Colors.pinkAccent,
+              dividerColor: Colors.pinkAccent,
+              errorColor: Colors.red,
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(primary: Theme.of(context).errorColor),
+              ),
+              // fontFamily: 'Montserrat',
+            ),
+            home: const Home(),
+            routes: <String, WidgetBuilder>{
+              Home.routeName: (_) => const Home(),
+              Persona.routeName: (_) => const Persona(),
+              Edit.routeName: (_) => Edit(),
+            },
+            onUnknownRoute: (settings) => MaterialPageRoute(
+              builder: (_) => const Home(),
+            ),
+          ),
+        );
   }
 }

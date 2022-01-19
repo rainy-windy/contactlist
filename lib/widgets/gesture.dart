@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Gesture extends StatelessWidget {
-  final int? index;
-  final String? caption;
-  final Color? colourStart;
-  final Color? colourEnd;
-  final Icon? icon;
 
-  const Gesture({@required this.index, @required this.caption, @required this.colourStart, @required this.colourEnd, @required this.icon, Key? key}) : super(key: key);
+  const Gesture({required this.caption, required this.colourStart, required this.colourEnd, required this.icon, Key? key}) : super(key: key);
+
+  final String caption;
+  final Color colourStart;
+  final Color colourEnd;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class Gesture extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           gradient: LinearGradient(
             colors: [
-              colourStart!,
-              colourEnd!.withOpacity(0.8),
+              colourStart,
+              colourEnd.withOpacity(0.8),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -31,8 +31,8 @@ class Gesture extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            icon!,
-            Text(caption!)
+            icon,
+            Text(caption)
           ],
         )
       );

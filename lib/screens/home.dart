@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
   ];
 
   int _page = 0;
+  bool _loading = false;
 
   //Page change upon tap on navbar
   void _select(int index) {
@@ -34,7 +35,17 @@ class _HomeState extends State<Home> {
   }
 
   @override
+  void initState() {
+    _loading = true;
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
+    //Usually used for async calls to ensure data is ready - putting here for representation's sake
+    if(_loading){
+      _loading == false;
+    }
     super.didChangeDependencies();
   }
 

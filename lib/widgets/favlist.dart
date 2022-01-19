@@ -16,22 +16,15 @@ class FavList extends StatefulWidget {
 class _FavListState extends State<FavList> {
   int? _expand;
 
-  // late Set<String> _favlist;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     final List<Person> listing = Provider.of<Contacts>(context, listen: true).listing;
-    final _favlist = Provider.of<Contacts>(context, listen: true).favourites;
+    final Set<String> _favlist = Provider.of<Contacts>(context, listen: true).favourites;
 
     return  CustomScrollView(
       slivers: <Widget>[
         const SliverBar(),
-        const SliverToBoxAdapter(child: SizedBox(height: 64)),
+        SliverToBoxAdapter(child: SizedBox(height: 64, child: Container(alignment: Alignment.center, child: const  Text('My Favourites')))),
         (_favlist.isEmpty)
           ? SliverToBoxAdapter(
             child: Container(
@@ -66,21 +59,20 @@ class _FavListState extends State<FavList> {
               return (_favlist.contains(listing[n].mobileNumber!))? GestureDetector(
                 onTap: () =>  setState(() =>  _expand = (_expand != n)? n : null),
                 onDoubleTap: () => Navigator.of(context).pushNamed(  '/persona', arguments: n),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 1000),
+                child: Container(
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     boxShadow: [ BoxShadow(
                         color: Theme.of(context).primaryColorDark.withOpacity(0.05),
                         spreadRadius: 1,
                         blurRadius: 1,
-                        offset: const Offset(3, 2),
+                        offset: const Offset(2, 1.5),
                       ),
                     ],
                     border:  Border.all(color: Theme.of(context).primaryColorDark, width: 0.5),
                   ),
-                  margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 1.0),
                   height: 72,
                   alignment: Alignment.center,
                   child: Row(

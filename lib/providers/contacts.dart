@@ -43,14 +43,19 @@ class Contacts with ChangeNotifier {
       emailAddress: 'leviathan@yahoo.com',
       mobileNumber: '91001081',
     ), Person(
+      lastName: 'Zhuang',
+      firstName: 'Yufeng',
+      emailAddress: 'yufeng@u.nus.com',
+      mobileNumber: '91501081',
+    ), Person(
       lastName: 'Harari',
       firstName: 'Yuval',
       emailAddress: 'homodeusi@gmail.com',
-      mobileNumber: '91501081',
+      mobileNumber: '91201081',
     ),  
   ];
 
-  Set<String> _fav = {'91501081', '91601081'};
+  Set<String> _fav = {'91501081', '91601081', '91801081'};
 
   //Current total contacts
   int get total {
@@ -75,10 +80,15 @@ class Contacts with ChangeNotifier {
   //Edit or Add a contact
   void edit(Person editPerson, [int? index]) {
     if(_items.isNotEmpty && index!= null){
+      if(index >= _items.length){
+        throw Error();
+      }
+
       if(_fav.contains(_items[index].mobileNumber)){
         _fav.remove(_items[index].mobileNumber);
         _fav.add(editPerson.mobileNumber as String);
       }
+      
       _items.removeAt(index);
     }
     
