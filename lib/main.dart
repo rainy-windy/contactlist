@@ -40,7 +40,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
 
     return _initialising
-      ? const CircularProgressIndicator()
+      ? const CircularProgressIndicator(strokeWidth: 8, backgroundColor: Colors.blue)
       : MultiProvider(
           providers: [
             ChangeNotifierProvider.value(
@@ -53,13 +53,12 @@ class _AppState extends State<App> {
               primaryColor: Colors.white,
               primaryColorLight:  Colors.orange,
               primaryColorDark: Colors.blue,
-              secondaryHeaderColor: Colors.pinkAccent,
+              secondaryHeaderColor: Colors.pink[200],
               dividerColor: Colors.pinkAccent,
-              errorColor: Colors.red,
+              errorColor: Colors.red[700],
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(primary: Theme.of(context).errorColor),
               ),
-              // fontFamily: 'Montserrat',
             ),
             home: const Home(),
             routes: <String, WidgetBuilder>{

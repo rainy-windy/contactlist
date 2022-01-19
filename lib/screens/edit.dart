@@ -131,7 +131,7 @@ class _EditState extends State<Edit> {
             children: <Widget>[
               TextFormField(
                 initialValue: _current.firstName,
-                maxLength: 12,
+                maxLength: 10,
                 decoration: _textstyle('First Name', const Icon(Icons.text_fields)),
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_nameNode),

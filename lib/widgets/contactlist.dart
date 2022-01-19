@@ -5,7 +5,7 @@ import '../providers/contacts.dart';
 import '../models/person.dart';
 
 import '../widgets/sliverbar.dart';
-import 'deletedialogue.dart';
+import './deletedialogue.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({Key? key }) : super(key: key);
@@ -25,17 +25,17 @@ class _ContactListState extends State<ContactList> {
       slivers: <Widget>[
         const SliverBar(),
         SliverToBoxAdapter(child:  Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
           child: Column(
             children: const <Widget>[
-              Text('To view more details, tap on the each card! Swipe right to delete, double tap to edit straight! For more actions, tap on the arrow head.'),
-              Divider()
+              Text('Swipe right to delete, double tap to edit straight! For more actions, tap on the arrow head.', textAlign: TextAlign.justify),
+              Divider(thickness: 1)
             ],
           ),
         ),),
         SliverList(delegate: SliverChildBuilderDelegate((BuildContext context, int n) {
           return Dismissible(
-                key: ValueKey<int>(n),
+                key: ValueKey<String>(listing[n].mobileNumber as String),
                 background: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                   alignment: Alignment.centerRight,
@@ -63,7 +63,7 @@ class _ContactListState extends State<ContactList> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),
                             child:  CircleAvatar(
-                              child: const Icon(Icons.person,  color: Colors.black, size: 32, ),
+                              child: const Icon(Icons.person,  color: Colors.black, size: 32),
                               backgroundColor: Theme.of(context).secondaryHeaderColor,
                               minRadius: 16.0,
                               maxRadius: 24.0,

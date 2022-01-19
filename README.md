@@ -5,7 +5,7 @@
 ## Prerequisites
 ### Foundation
 ##### 1. [Android Studio](https://developer.android.com/studio) >= 2020.3.1
-##### 2. [Flutter](https://flutter.dev/docs/get-started/install/macos) = 2.5.1-stable + Null-safety enabled
+##### 2. [Flutter](https://flutter.dev/docs/get-started/install/macos) = 2.5.2-stable + Null-safety enabled
 
 ### Tools - Simulators\Browsers\Ports 
 ##### 1. **Android Studio AVD with API >= 30**, preferrably using Google Pixel 4.

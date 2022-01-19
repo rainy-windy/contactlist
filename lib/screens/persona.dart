@@ -88,14 +88,14 @@ class _PersonaState extends State<Persona> {
                               Expanded(
                                   flex: 4,
                                   child: GestureDetector(
-                                    child: const Gesture(caption: 'Edit', colourStart: Color(0xFF90EE90), colourEnd: Color(0xFF008080), icon:  Icon(Icons.edit)),
+                                    child: Gesture(caption: 'Edit', colourStart: const Color(0xFFFFE0B2), colourEnd: Theme.of(context).primaryColorLight, icon:  Icon(Icons.edit)),
                                     onTap: () =>  Navigator.of(context).pushNamed('/edit', arguments: _index),
                                   ),
                               ),
                               Expanded(
                                   flex: 4,
                                   child: InkWell(
-                                    child: Gesture(caption: 'Fav', colourStart: const Color(0xFFFFFF00), colourEnd: const Color(0xFFCCCC00), icon: favlist.contains(_person!.mobileNumber)? const Icon(Icons.star) : const Icon(Icons.star_border)),
+                                    child: Gesture(caption: 'Star', colourStart: const Color(0xFFFCE4EC), colourEnd: Theme.of(context).secondaryHeaderColor, icon: favlist.contains(_person!.mobileNumber)? const Icon(Icons.star) : const Icon(Icons.star_border)),
                                     onTap: () =>Provider.of<Contacts>(context,listen: false).like(_person!.mobileNumber as String),
                                     splashColor:  const Color(0xFFFFFF00),
                                     radius: 16,

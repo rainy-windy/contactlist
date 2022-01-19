@@ -16,15 +16,15 @@ class Gesture extends StatelessWidget {
         height: 64,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
           gradient: LinearGradient(
             colors: [
               colourStart,
-              colourEnd.withOpacity(0.8),
+              colourEnd.withOpacity(0.85),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: const [0.1, 1],
+            stops: const [0.05, 1],
           ),
         ),
         child: Column(
@@ -32,7 +32,7 @@ class Gesture extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             icon,
-            Text(caption)
+            Text(caption, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),)
           ],
         )
       );

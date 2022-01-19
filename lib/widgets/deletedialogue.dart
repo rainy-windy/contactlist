@@ -31,7 +31,7 @@ class DeleteDialogue extends StatelessWidget {
     return AlertDialog(
       content: Container(
             padding: const EdgeInsets.only(top: 24),
-            height: MediaQuery.of(context).size.height * 0.2,
+            height: 160,
             width: double.maxFinite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

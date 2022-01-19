@@ -24,7 +24,16 @@ class _FavListState extends State<FavList> {
     return  CustomScrollView(
       slivers: <Widget>[
         const SliverBar(),
-        SliverToBoxAdapter(child: SizedBox(height: 64, child: Container(alignment: Alignment.center, child: const  Text('My Favourites')))),
+        SliverToBoxAdapter(child: SizedBox(height: 64, child: Container(alignment: Alignment.center, 
+          child: const  Text('My Favourites', 
+            style: TextStyle(
+              decoration: TextDecoration.underline,               
+              shadows: [ Shadow(color: Colors.black, offset: Offset(0, -5)) ],
+              decorationColor: Colors.black,
+              color: Colors.transparent)
+            ),
+          ),
+        )),
         (_favlist.isEmpty)
           ? SliverToBoxAdapter(
             child: Container(
@@ -57,6 +66,7 @@ class _FavListState extends State<FavList> {
             ) 
           : SliverList(delegate: SliverChildBuilderDelegate((BuildContext context, int n) {
               return (_favlist.contains(listing[n].mobileNumber!))? GestureDetector(
+                key: ValueKey<String>(listing[n].mobileNumber as String),
                 onTap: () =>  setState(() =>  _expand = (_expand != n)? n : null),
                 onDoubleTap: () => Navigator.of(context).pushNamed(  '/persona', arguments: n),
                 child: Container(
