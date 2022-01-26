@@ -7,9 +7,9 @@ class Person {
   final String? mobileNumber;
 
   Person({
-    @required this.firstName,
-    @required this.lastName,
-    @required this.emailAddress,
-    @required this.mobileNumber,
+    required this.firstName,
+    required this.lastName,
+    required this.emailAddress,
+    required this.mobileNumber,
   });
 }

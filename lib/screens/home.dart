@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../models/person.dart';
-import '../providers/contacts.dart';
 import '../widgets/contactlist.dart';
 import '../widgets/favlist.dart';
 
 const String PAGE = 'page';
 const String TITLE = 'title';
 const String ICON = 'icon';
-const String FAB = 'fab';
 
 class Home extends StatefulWidget {
   static const routeName = '/home';
