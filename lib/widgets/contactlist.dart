@@ -56,7 +56,7 @@ class _ContactListState extends State<ContactList> {
                     margin: const EdgeInsets.symmetric(horizontal:8.0, vertical: 4.0),
                     shadowColor: Theme.of(context).primaryColorDark,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: (n == _expand)? 18.0 : 12.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
