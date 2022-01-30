@@ -15,7 +15,7 @@
 
 ---
 ## Accounts
-##### None
+##### None - not required
 
 ---
 ## Instructions 
@@ -41,7 +41,8 @@ flutter run --verbose
 
 ---
 ## Branches
-##### NIL
+### Branching & Releases
+##### NIL - this only a demo
 
 ### Merge Requests
 ##### NIL
