@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import '../widgets/contactlist.dart';
 import '../widgets/favlist.dart';
 
@@ -17,7 +20,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<Map<String, dynamic>> _pages = [
-    {TITLE: 'My Contacts', PAGE: const ContactList(), ICON: const Icon(Icons.contacts) },
+    {TITLE: 'My Contacts', PAGE: const ContactList(), ICON: const Icon(Icons.contacts)},
     {TITLE: 'Favourites', PAGE: const FavList(), ICON: const Icon(Icons.favorite)}
   ];
 
@@ -38,7 +41,7 @@ class _HomeState extends State<Home> {
   @override
   void didChangeDependencies() {
     //Usually used for async calls to ensure data is ready - putting here for representation's sake
-    if(_loading){
+    if (_loading) {
       _loading == false;
     }
     super.didChangeDependencies();
@@ -46,16 +49,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body:  _pages.elementAt(_page)[PAGE],
+      body: _pages.elementAt(_page)[PAGE],
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Theme.of(context).primaryColorDark,
-        materialTapTargetSize: MaterialTapTargetSize.padded,
-        onPressed: () => Navigator.of(context).pushNamed('/edit', arguments: null),
-        label: const Icon(Icons.person_add)
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton.extended(
+              backgroundColor: Theme.of(context).primaryColorDark, materialTapTargetSize: MaterialTapTargetSize.padded, onPressed: () => Navigator.of(context).pushNamed('/edit', arguments: null), label: const Icon(Icons.person_add)),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border(
@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
           currentIndex: _page,
           type: BottomNavigationBarType.shifting,
-          items: _pages.map((page) => BottomNavigationBarItem( label: page[TITLE],icon: page[ICON])).toList(),
+          items: _pages.map((page) => BottomNavigationBarItem(label: page[TITLE], icon: page[ICON])).toList(),
         ),
       ),
     );
